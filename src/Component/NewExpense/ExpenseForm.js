@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredAmount, setEnteredAmount] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
@@ -24,6 +24,7 @@ const ExpenseForm = () => {
       amount: enteredAmount,
       Date: new Date(enteredDate),
     };
+    props.onSaveExpenseData(expanseData);
     console.log(expanseData);
     //to make blank when fill the foam it is called Two-way binding
     setEnteredTitle("");
@@ -53,7 +54,7 @@ const ExpenseForm = () => {
         </div>
         <div className="new-expense_control">
           <label>Date</label>
-          <input type="Data" onChange={dataChangeHandler} />
+          <input type="date" onChange={dataChangeHandler} />
         </div>
       </div>
       <div className="new-expense_actions">
